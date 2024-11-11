@@ -1,5 +1,4 @@
-﻿
-internal class Program
+﻿internal class Program
 {
     public class Singer
     {
@@ -52,14 +51,20 @@ internal class Program
 
         // 3. 2000 yılı öncesi çıkış yapmış ve pop müzik yapan şarkıcılar
         var singersBefore2000Pop = singers
-            .Where(s => s.DebutYear < 2000 && s.Genre.Contains("Pop"))
+        .Where(s => s.DebutYear < 2000 && s.Genre.Contains("Pop"))
             .OrderBy(s => s.DebutYear)
             .ThenBy(s => s.Name)
+            .GroupBy(s => s.DebutYear)
             .ToList();
-        Console.WriteLine("\n2000 yılı öncesi çıkış yapmış ve pop müzik yapan şarkıcılar:");
-        foreach (var singer in singersBefore2000Pop)
+
+        Console.WriteLine("\n2000 yılı öncesi çıkış yapmış ve pop müzik yapan şarkıcılar (Çıkış yıllarına göre gruplanmış):");
+        foreach (var group in singersBefore2000Pop)
         {
-            Console.WriteLine($"{singer.Name} ({singer.DebutYear})");
+            Console.WriteLine($"\nÇıkış Yılı: {group.Key}");
+            foreach (var singer in group)
+            {
+                Console.WriteLine($"- {singer.Name}");
+            }
         }
 
         // 4. En çok albüm satan şarkıcı
