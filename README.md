@@ -28,7 +28,6 @@ Bu programı çalıştırmak için, Visual Studio veya .NET Core SDK gibi bir C#
 Program çalıştırıldığında aşağıdaki gibi bir çıktı verir:
 
 ```rust
-Kodu kopyala
 Adı 'S' ile başlayan şarkıcılar:
 Sezen Aksu
 Sertab Erener
